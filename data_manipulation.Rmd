@@ -80,4 +80,29 @@ drop_na(litters_data)
 drop_na(litters_data, gd0_weight)
 ```
 
+## Mutate
+
+```{r}
+mutate(litters_data, wt_gain = gd18_weight - gd0_weight)
+
+mutate(
+  litters_data, 
+  wt_gain = gd18_weight - gd0_weight,
+  group = str_to_lower(group),
+  group = str_to_upper(group)
+)
+```
+
+Mutating is great ... But I don't have more examples.
+
+## Arrange
+
+```{r}
+arrange(litters_data, pups_born_alive)
+
+arrange(litters_data, desc(pups_born_alive))
+
+#arrange according to a few different things:
+arrange(litters_data, pups_born_alive, gd0_weight)
+```
 
