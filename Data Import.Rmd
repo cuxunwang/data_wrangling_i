@@ -47,9 +47,12 @@ litters_data =
 ## Read in an excel file ...
 
 ```{r}
-mlb11_data = 
-  read_excel(path = "./data/mlb11.xlsx",
-  range = "A1:D7")
+mlb11_data_subset = 
+  read_excel(
+    path = "./data/mlb11.xlsx",
+    range = "A1:D7")
+
+write_csv(mlb11_data_subset, path = "./data/mlb_subset.csv")
 ```
 
 ## Read in SAS
