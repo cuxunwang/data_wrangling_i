@@ -3,7 +3,7 @@ Data Import
 Xun Wang
 9/22/2019
 
-## Load in a dataset
+## Load in the litters data
 
 ``` r
 litters_data = read_csv(file = "./data/FAS_litters.csv")
@@ -23,4 +23,24 @@ litters_data = read_csv(file = "./data/FAS_litters.csv")
 
 ``` r
 litters_data = janitor::clean_names(litters_data)
+```
+
+## Load in the pups data
+
+``` r
+pups_data =  read_csv(file = "./data/FAS_pups.csv")
+```
+
+    ## Parsed with column specification:
+    ## cols(
+    ##   `Litter Number` = col_character(),
+    ##   Sex = col_double(),
+    ##   `PD ears` = col_double(),
+    ##   `PD eyes` = col_double(),
+    ##   `PD pivot` = col_double(),
+    ##   `PD walk` = col_double()
+    ## )
+
+``` r
+pups_data =  janitor::clean_names(pups_data)
 ```
