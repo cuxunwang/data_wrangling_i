@@ -40,3 +40,25 @@ litters_data =
     ##   `Pups dead @ birth` = col_double(),
     ##   `Pups survive` = col_double()
     ## )
+
+## 
+
+``` r
+analysis_result = tibble(
+  group = c("treatment", "treatment", "placebo", "placebo"),
+  time = c("pre", "post", "pre", "post"),
+  mean = c(4, 8, 3.5, 4)
+)
+
+pivot_wider(
+  analysis_result,
+  names_from = "time",
+  values_from = "mean"
+)
+```
+
+    ## # A tibble: 2 x 3
+    ##   group       pre  post
+    ##   <chr>     <dbl> <dbl>
+    ## 1 treatment   4       8
+    ## 2 placebo     3.5     4
