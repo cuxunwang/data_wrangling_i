@@ -67,7 +67,7 @@ return_king =
   readxl::read_excel("./data/LotR_Words.xlsx", range = "J3:L6") %>%
   mutate(movie = "return_king")
 
-lotr_data=
+lotr_data =
   bind_rows(fellowship_ring, two_towers, return_king) %>% 
   janitor::clean_names() %>% 
   pivot_longer(
@@ -77,5 +77,35 @@ lotr_data=
   ) %>% 
   select(movie, race, sex, words)
 
+```
+
+## join datasets
+
+```{r}
+pup_data = 
+  read_csv("./data/FAS_pups.csv", col_types = "ciiiii") %>%
+  janitor::clean_names() %>%
+  mutate(sex = recode(sex, `1` = "male", `2` = "female")) 
+
+litter_data = 
+  read_csv("./data/FAS_litters.csv", col_types = "ccddiiii") %>%
+  janitor::clean_names() %>%
+  select(-pups_survive) %>%
+  mutate(
+    wt_gain = gd18_weight - gd0_weight,
+    group = str_to_lower(group))
+```
+
+try to join these datasets!!
+
+```{r}
+fas_data = 
+  left_join(pup_data, litter_data, by = "litter_number")
+# you can join by multiple variables by:
+# left_join(pup_data, litter_data, by = c("litter_number", "something_else"))
+fas_data
+
+full_join(pup_data, litter_data, by = "litter_number") %>% 
+  filter(is.na(sex))
 ```
 
